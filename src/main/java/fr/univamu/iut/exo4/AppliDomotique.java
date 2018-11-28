@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class AppliDomotique {
     static ArrayList<Connectable> objets = new ArrayList<Connectable>();
+    static ArrayList<Connectable> actif = new ArrayList<Connectable>();
 
     public static int menu() {
         int choix = 1;
@@ -48,14 +49,13 @@ public class AppliDomotique {
         System.out.println(objets);
         activer();
         detacher();
-        activer();
 
 
     }
 
     private static void activer(){
         Demareur demareur = new Demareur();
-        for(Connectable connectable : objets){
+        for(Connectable connectable : actif){
             int choix = 0;
             System.out.println("Voulez-vous activer "+connectable.getClass());
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -81,7 +81,7 @@ public class AppliDomotique {
 
     private static void detacher(){
         Demareur demareur = new Demareur();
-        for(Connectable connectable : objets){
+        for(Connectable connectable : actif){
             int choix = 0;
             System.out.println("Voulez-vous détacher "+connectable.getClass());
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
